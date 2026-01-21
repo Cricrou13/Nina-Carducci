@@ -52,6 +52,7 @@
 
   $.fn.mauGallery.listeners = function(options) {
     $(".gallery-item").on("click", function() {
+       // Ouvre la modale au clic sur une image
       if (options.lightBox && $(this).prop("tagName") === "IMG") {
         $.fn.mauGallery.methods.openLightBox($(this), options.lightboxId);
       } else {
@@ -59,7 +60,10 @@
       }
     });
 
+ // Écoute les clics sur les filtres (Concert, Portrait...)
     $(".gallery").on("click", ".nav-link", $.fn.mauGallery.methods.filterByTag);
+
+      // Écoute les clics sur les flèches de la modale
     $(".gallery").on("click", ".mg-prev", () =>
       $.fn.mauGallery.methods.prevImage(options.lightboxId)
     );
@@ -175,6 +179,7 @@
         }
       });
 
+        // 2. On récupère la catégorie active pour ne défiler que dans celle-ci
       let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
       let imagesCollection = [];
       if (activeTag === "all") {
@@ -199,8 +204,11 @@
         }
       }
 
+       // 3. On calcule l'index de l'image suivante
       let nextIndex = index + 1 >= imagesCollection.length ? 0 : index + 1;
       let nextImage = imagesCollection[nextIndex];
+
+       // 4. On change la source de l'image affichée
       $(".lightboxImage").attr("src", $(nextImage).attr("src"));
     },
 
@@ -245,26 +253,26 @@
       }
     },
     filterByTag() {
-      if ($(this).hasClass("active-tag")) {
+      if ($(this).hasClass("active-tag")) { /* Change l'apparence du bouton cliqué */
         return;
       }
       $(".nav-link").removeClass("active active-tag");
       $(this).addClass("active Parammètres lanquantsactive-tag");
 
-      var tag = $(this).data("images-toggle");
+      var tag = $(this).data("images-toggle"); // On récupère la catégorie (ex: "Concert")
 
       $(".gallery-item").each(function() {
         $(this)
           .parents(".item-column")
-          .hide();
+          .hide(); // On cache tout
         if (tag === "all") {
           $(this)
             .parents(".item-column")
-            .show(300);
+            .show(300); // Si "Tous", on affiche tout
         } else if ($(this).data("gallery-tag") === tag) {
           $(this)
             .parents(".item-column")
-            .show(300);
+            .show(300); // Sinon, on affiche uniquement le tag
         }
       });
     }
