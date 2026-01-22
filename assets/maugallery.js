@@ -41,7 +41,7 @@
     });
   };
 
-  $.fn.mauGallery.defaults = {
+  $.fn.mauGallery.defaults = {/* Configuration de base */
     columns: 3,
     lightBox: true,
     lightboxId: null,
@@ -50,7 +50,7 @@
     navigation: true
   };
 
-  $.fn.mauGallery.listeners = function(options) {
+  $.fn.mauGallery.listeners = function(options) {/* Attend les actions de l'utilisateur */
     $(".gallery-item").on("click", function() {
        // Ouvre la modale au clic sur une image
       if (options.lightBox && $(this).prop("tagName") === "IMG") {
@@ -257,7 +257,7 @@
         return;
       }
       $(".nav-link").removeClass("active active-tag");
-      $(this).addClass("active Parammètres lanquantsactive-tag");
+      $(this).addClass("active active-tag");
 
       var tag = $(this).data("images-toggle"); // On récupère la catégorie (ex: "Concert")
 
