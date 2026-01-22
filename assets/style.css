@@ -311,6 +311,33 @@ input[type="submit"] {
 	padding: .5em 1em
 }
 
+.main-footer {
+    padding: 50px 0; /* Donne de l'espace pour que ça respire */
+    background-color: #F3F3F3; /* Un gris très doux */
+    text-align: center;
+    border-top: 1px solid #E5E5E5; /* Une ligne fine pour séparer du reste */
+}
+
+.main-footer p {
+    font-family: 'Inter', sans-serif; /* La police du corps de texte */
+    font-size: 14px;
+    color: #666; /* Couleur de texte plus douce que le noir pur */
+    margin: 0;
+}
+
+.main-footer a {
+    color: #000; /* Lien en noir */
+    text-decoration: none; /* Enlève le soulignement bleu */
+    font-weight: 600; /* Met le lien un peu plus en gras */
+    transition: color 0.3s ease;
+    margin-left: 5px;
+}
+
+.main-footer a:hover {
+    color: #BEB45A; /* Une petite touche dorée quand on survole (style Nina Carducci) */
+    text-decoration: underline;
+}
+
 @media all and (max-width: 1180px) {
 	.picture {
 		flex : 2;
